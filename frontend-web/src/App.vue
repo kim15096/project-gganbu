@@ -1,7 +1,3 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
   <div id="app">
     <div class="app-navbar">
@@ -13,6 +9,38 @@ import { RouterLink, RouterView } from 'vue-router'
 
 </template>
 
+<script>
+import { RouterLink, RouterView } from 'vue-router'
+
+import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue"
+import { useLayoutStore } from './stores/layoutStore';
+
+export default {
+  name: 'App',
+  components: {
+    Footer,
+    Navbar,
+  },
+  data() {
+    return {
+      isPhoneLayout: false,
+    };
+  },
+  // Detecting phone viewport for webapp
+  mounted() {
+    const layoutStore = useLayoutStore();
+    layoutStore.updateLayout();
+    window.addEventListener('resize', layoutStore.updateLayout);
+  },
+  beforeUnmount() {
+    const layoutStore = useLayoutStore();
+    window.removeEventListener('resize', layoutStore.updateLayout);
+  },
+
+};
+</script>
+
 <style scoped>
 .app-navbar {
   position: fixed;
@@ -21,16 +49,3 @@ import { RouterLink, RouterView } from 'vue-router'
   width: 100vw; /* Adjust the width as needed */
 }
 </style>
-
-<script>
-import Navbar from "./components/Navbar.vue";
-import Footer from "./components/Footer.vue"
-
-export default {
-  name: 'App',
-  components: {
-    Footer,
-    Navbar,
-  },
-};
-</script>
