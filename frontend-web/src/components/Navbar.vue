@@ -1,29 +1,26 @@
 <template>
+  <div v-if="!layoutStore.isPhoneLayout" class="app-navbar">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="/">
         <text class="fw-bold" style="color: #000000; font-weight: 600;">GGANBU</text>
       </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-      <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="navbarNav">
       </div>  
     </div>
   </nav>
+</div>
 </template>
 
 <script>
+import { useLayoutStore } from '@/stores/layoutStore';
+
 export default {
   name: "Navbar",
+  setup() {
+        const layoutStore = useLayoutStore()
+        return { layoutStore }
+    },
 };
 </script>
 
@@ -35,5 +32,11 @@ export default {
 }  
 .container {
   margin-left:5px;
+}
+.app-navbar {
+  position: fixed;
+  left: 0;
+  top: 0; /* To make it stick to the very left of the page */
+  width: 100vw; /* Adjust the width as needed */
 }
 </style>
