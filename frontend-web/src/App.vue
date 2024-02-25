@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <div class="app-navbar">
-      <Navbar/>
-    </div>
+    <Navbar/>
     <RouterView /> 
     <Footer />
   </div>
@@ -32,20 +30,17 @@ export default {
     const layoutStore = useLayoutStore();
     layoutStore.updateLayout();
     window.addEventListener('resize', layoutStore.updateLayout);
+
   },
   beforeUnmount() {
     const layoutStore = useLayoutStore();
     window.removeEventListener('resize', layoutStore.updateLayout);
   },
+  methods: {
+  }
 
 };
 </script>
 
 <style scoped>
-.app-navbar {
-  position: fixed;
-  left: 0;
-  top: 0; /* To make it stick to the very left of the page */
-  width: 100vw; /* Adjust the width as needed */
-}
 </style>
