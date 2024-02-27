@@ -8,17 +8,17 @@
          <a class="ms-2">LikeLion Project: GGANBU</a>
     </div>
     <div v-else class="bottomNav">
-        <HillBottomNavigation :options="options" v-model="selected" />
+        <WindowsBottomNavigation :options="options" border-color='#555555' v-model="selected" />
     </div>
   </template>
   
   <script>
   import { useLayoutStore } from '@/stores/layoutStore';
-  import { HillBottomNavigation } from "bottom-navigation-vue";
+  import { WindowsBottomNavigation } from "bottom-navigation-vue";
   import "bottom-navigation-vue/dist/style.css";
 
   export default {
-    components: { HillBottomNavigation },
+    components: { WindowsBottomNavigation },
     name: 'Footer',
     // State management intialization
     setup() {
@@ -28,14 +28,15 @@
     data: () => ({
       selected: 1,
       options: [
-        { id: 1, icon: 'fa fa-home fa-2x', color: '#5639af' },
+        { id: 1, icon: 'fa fa-home fa', path: { name: "home", query:""}, color: '#555555' },
         {
           id: 2,
-          icon: 'fa fa-search fa-2x',
-          color: '#ac4793',
+          icon: 'fa fa-search fa',
+          path: { name: "search", query:""},
+          color: '#555555',
         },
-        { id: 3, icon: 'fa fa-heart fa-2x', color: '#e2a93a' },
-        { id: 4, icon: 'fa fa-gear fa-2x',  color: '#4493a7' }
+        { id: 3, icon: 'fa fa-heart fa', color: '#555555' },
+        { id: 4, icon: 'fa fa-user fa',  path: { name: "profile", query:""}, color: '#555555' }
       ],
     }),
 
