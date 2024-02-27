@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Navbar/>
-    <RouterView /> 
+    <Navbar />
+    <RouterView class="mt-3" /> 
     <Footer />
   </div>
 
@@ -30,7 +30,6 @@ export default {
     const layoutStore = useLayoutStore();
     layoutStore.updateLayout();
     window.addEventListener('resize', layoutStore.updateLayout);
-
   },
   beforeUnmount() {
     const layoutStore = useLayoutStore();
@@ -42,5 +41,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<!-- Global Styles -->
+<style>
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#app {
+  display: flex;
+}
 </style>

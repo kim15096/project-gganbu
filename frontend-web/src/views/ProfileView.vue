@@ -2,10 +2,10 @@
 </script>
 
 <template>
-  <h1>Sign Up!</h1>
+  <h1>Profile Page</h1>
 </template>
 
-<style>
+<style scoped>
 body {
   margin-top: 65px;
   background-color: #eeeeee; /* Example: a light grey background */

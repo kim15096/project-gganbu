@@ -2,14 +2,13 @@
   <!-- WEB LAYOUT -->
   <div v-if="!layoutStore.isPhoneLayout" class="app-navbar">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+    <div class="container me-4">
       <a class="navbar-brand" href="/">
-        <text class="fw-bold" style="color: #000000; font-weight: 600;">GGANBU</text>
+        <text class="fw" style="color: #000000; font-weight: 600;">🤙 GGANBU</text>
+        <text class="fs-5 ms-3">UC Davis</text>
       </a>
-      <a> Request Demo </a>
-      <a href="/profile" style="">Sign Up</a>
-      <div class="collapse navbar-collapse" id="navbarNav">
-      </div>  
+      <a href="/signup" style="margin-left: auto;">Sign In</a>
+
     </div>
   </nav>
 </div>
@@ -18,12 +17,11 @@
 <div v-if="layoutStore.isPhoneLayout" class="app-navbar">
   <nav class="navbar navbar-expand-lg mobile-navbar bg-light">
     <div class="container">
-      <a class="navbar-brand" href="/">
-        <text class="fw-bold" style="color: #000000; font-weight: 600;">GGANBU</text>
+      <a class="navbar-brand" href="/"> 
+        <text class="fw" style="color: #000000; font-weight: 600;">🤙 GGANBU</text>
       </a>
-      <a style="margin-left:auto;">Sign Up</a>
-      <div class="collapse navbar-collapse" id="navbarNav">
-      </div>  
+      <a href="/signup" style="margin-left:auto;">Sign In</a>
+
     </div>
   </nav>
 </div>
@@ -54,6 +52,7 @@ export default {
 }  
 .container {
   margin-left:5px;
+  max-width: 100%;
 }
 .app-navbar {
   position: fixed;
