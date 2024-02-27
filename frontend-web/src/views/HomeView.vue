@@ -1,9 +1,37 @@
-<script setup>
-</script>
-
 <template>
-  <h1>Welcome to HomeView</h1>
+  <!-- WEB LAYOUT -->
+  <div v-if="!layoutStore.isPhoneLayout">
+    <h1>Welcome to HomeView - WEB</h1>
+  </div>
+
+  <!-- PHONE LAYOUT -->
+  <div v-if="layoutStore.isPhoneLayout">
+    <h1>Welcome to HomeView - PHONE</h1>
+  </div>
 </template>
+
+<script>
+import { useLayoutStore } from '@/stores/layoutStore';
+
+export default {
+  name: 'HomeView',
+  components: {
+
+  },
+  setup() {
+        const layoutStore = useLayoutStore()
+        return { layoutStore }
+    },
+  data() {
+    return {
+      isPhoneLayout: false,
+    };
+  },
+  methods: {
+  }
+
+};
+</script>
 
 <style>
 body {
