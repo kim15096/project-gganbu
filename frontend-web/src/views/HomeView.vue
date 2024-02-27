@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <h1>Welcome to GGANBU</h1>
+  <h1>Welcome to HomeView</h1>
 </template>
 
 <style>
