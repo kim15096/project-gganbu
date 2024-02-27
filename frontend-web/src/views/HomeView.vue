@@ -7,7 +7,6 @@
 
 <style>
 body {
-  margin-top: 65px;
-  background-color: #eeeeee; /* Example: a light grey background */
+  background-color: #efefef; /* Example: a light grey background */
 }
 </style>

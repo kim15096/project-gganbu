@@ -5,7 +5,7 @@
   <h1>Search</h1>
 </template>
 
-<style>
+<style scoped>
 body {
   background-color: #eeeeee; /* Example: a light grey background */
 }

@@ -35,7 +35,7 @@
           path: { name: "search", query:""},
           color: '#555555',
         },
-        { id: 3, icon: 'fa fa-heart fa', color: '#555555' },
+        { id: 3, icon: 'fa fa-heart fa', path: { name: "profile", query:""}, color: '#555555' },
         { id: 4, icon: 'fa fa-user fa',  path: { name: "profile", query:""}, color: '#555555' }
       ],
     }),
