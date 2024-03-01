@@ -9,9 +9,9 @@ from dotenv import load_dotenv
 app = Flask(__name__)
 CORS(app)
 load_dotenv()
-SUPABASE_PROJECT_URL = os.getenv('SUPABASE_PROJECT_URL')
-SUPABASE_API_KEY = os.getenv('SUPABASE_API_KEY')
-supabase_client = create_client(SUPABASE_PROJECT_URL, SUPABASE_API_KEY)
+url: str = os.environ.get("SUPABASE_PROJECT_URL")
+key: str = os.environ.get("SUPABASE_API_KEY")
+supabase: Client = create_client(url, key)
 
 #################################### API ENDPOINTS ######################################
 
@@ -23,7 +23,11 @@ List ALL Parameters/Arguments & Return Types
 def index():
     return "Hello"
 
-
+@app.route('/get_name', methods=['GET'])
+def get_name():
+    response = supabase.table('Users').select("*").execute()
+    data = response.data
+    return data
 '''
 Example Route:
 
@@ -43,10 +47,15 @@ def auto_complete():
 #################################### USER ROUTES ######################################
 
 
-
-
 #################################### POST ROUTES ######################################
-
+'''
+Get Posts
+'''
+@app.route('/get_posts', methods=['GET'])
+def get_posts():
+    response = supabase.table('Events').select("*").execute()
+    data = response.data
+    return data
 
 
 

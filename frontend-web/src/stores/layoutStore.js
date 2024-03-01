@@ -5,7 +5,6 @@ export const useLayoutStore = defineStore('layout', {
     isPhoneLayout: false,
   }),
   getters: {
-    // Optional if direct state access is sufficient
     getIsPhoneLayout: (state) => state.isPhoneLayout,
   },
   actions: {

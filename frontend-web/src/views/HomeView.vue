@@ -7,6 +7,6 @@
 
 <style>
 body {
-  background-color: #efefef; /* Example: a light grey background */
+  background-color: #f1f1f1;
 }
 </style>

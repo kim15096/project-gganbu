@@ -20,7 +20,7 @@
       <a class="navbar-brand" href="/"> 
         <text class="fw" style="color: #000000; font-weight: 600;">🤙 GGANBU</text>
       </a>
-      <a href="/signup" style="margin-left:auto;">Sign In</a>
+      <a v-if="!authStore.userLoggedIn" href="/signup" style="margin-left:auto;">Sign In</a>
 
     </div>
   </nav>
@@ -29,12 +29,14 @@
 
 <script>
 import { useLayoutStore } from '@/stores/layoutStore';
+import { useAuthStore } from '@/stores/authStore';
 
 export default {
   name: "Navbar",
   setup() {
         const layoutStore = useLayoutStore()
-        return { layoutStore }
+        const authStore = useAuthStore()
+        return { layoutStore, authStore }
     },
 };
 </script>
@@ -47,8 +49,8 @@ export default {
 }  
 .mobile-navbar{
   background-color: white!important;
-  box-shadow: 0 2px 2px 0 rgba(37, 37, 37, 0.1);
-  height: 65px;
+  box-shadow: 0 1px 1px 0 rgba(37, 37, 37, 0.1);
+  height: 55px;
 }  
 .container {
   margin-left:5px;

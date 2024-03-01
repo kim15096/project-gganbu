@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.7",
+    "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "bottom-navigation-vue": "^3.3.5",
     "pinia": "^2.1.7",

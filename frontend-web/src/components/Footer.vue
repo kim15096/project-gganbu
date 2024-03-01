@@ -7,13 +7,14 @@
         <hr class="m-0" style="padding-bottom: 4px;">
          <a class="ms-2">LikeLion Project: GGANBU</a>
     </div>
-    <div v-else class="bottomNav">
+    <div v-else-if="layoutStore.isPhoneLayout && authStore.userLoggedIn" class="bottomNav">
         <WindowsBottomNavigation :options="options" border-color='#555555' v-model="selected" />
     </div>
   </template>
   
   <script>
   import { useLayoutStore } from '@/stores/layoutStore';
+  import { useAuthStore } from '@/stores/authStore';
   import { WindowsBottomNavigation } from "bottom-navigation-vue";
   import "bottom-navigation-vue/dist/style.css";
 
@@ -23,7 +24,8 @@
     // State management intialization
     setup() {
         const layoutStore = useLayoutStore()
-        return { layoutStore }
+        const authStore = useAuthStore()
+        return { layoutStore, authStore }
     },
     data: () => ({
       selected: 1,
@@ -35,7 +37,7 @@
           path: { name: "search", query:""},
           color: '#555555',
         },
-        { id: 3, icon: 'fa fa-heart fa', path: { name: "profile", query:""}, color: '#555555' },
+        { id: 3, icon: 'fa fa-heart fa', path: { name: "favorites", query:""}, color: '#555555' },
         { id: 4, icon: 'fa fa-user fa',  path: { name: "profile", query:""}, color: '#555555' }
       ],
     }),
