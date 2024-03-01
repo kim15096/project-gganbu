@@ -8,18 +8,18 @@
          <a class="ms-2">LikeLion Project: GGANBU</a>
     </div>
     <div v-else-if="layoutStore.isPhoneLayout && authStore.userLoggedIn" class="bottomNav">
-        <WindowsBottomNavigation :options="options" border-color='#555555' v-model="selected" />
+        <SwipeBottomNavigation swiper-color='#E66000' icon-color="#E66000" :options="options" v-model="selected" />
     </div>
   </template>
   
   <script>
   import { useLayoutStore } from '@/stores/layoutStore';
   import { useAuthStore } from '@/stores/authStore';
-  import { WindowsBottomNavigation } from "bottom-navigation-vue";
+  import { SwipeBottomNavigation } from "bottom-navigation-vue";
   import "bottom-navigation-vue/dist/style.css";
 
   export default {
-    components: { WindowsBottomNavigation },
+    components: { SwipeBottomNavigation },
     name: 'Footer',
     // State management intialization
     setup() {
@@ -30,15 +30,15 @@
     data: () => ({
       selected: 1,
       options: [
-        { id: 1, icon: 'fa fa-home fa', path: { name: "home", query:""}, color: '#555555' },
+        { id: 1, icon: 'fa fa-home fa-lg', path: { name: "home", query:""}, title:"Home"},
         {
           id: 2,
-          icon: 'fa fa-search fa',
+          icon: 'fa fa-search fa-lg',
           path: { name: "search", query:""},
-          color: '#555555',
+          title: 'Search',
         },
-        { id: 3, icon: 'fa fa-heart fa', path: { name: "favorites", query:""}, color: '#555555' },
-        { id: 4, icon: 'fa fa-user fa',  path: { name: "profile", query:""}, color: '#555555' }
+        { id: 3, icon: 'fa fa-heart fa-lg', path: { name: "favorites", query:""}, title: 'Favorites' },
+        { id: 4, icon: 'fa fa-user fa-lg',  path: { name: "profile", query:""}, title: 'Profile' }
       ],
     }),
 

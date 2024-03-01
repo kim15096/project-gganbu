@@ -69,6 +69,6 @@ a {
 
 #app {
   display: flex;
-  padding: 8px;
+  padding: 0px;
 }
 </style>

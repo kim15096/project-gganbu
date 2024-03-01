@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <h1>Favorites Page</h1>
+  <h1 class="mt-3">Favorites Page</h1>
 </template>
 
 <style scoped>

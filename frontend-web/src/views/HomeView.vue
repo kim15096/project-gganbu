@@ -2,11 +2,15 @@
 </script>
 
 <template>
-  <h1>Welcome to HomeView</h1>
+  <div class="main">
+    <h1>Welcome to HomeView</h1>
+  </div>
 </template>
 
-<style>
-body {
-  background-color: #f1f1f1;
+<style scoped>
+.main {
+  background-color: #f3f3f3;
+  height: 100vh;
+  width: 100vw;
 }
 </style>

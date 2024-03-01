@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <h1>Search</h1>
+  <h1 class="mt-3">Search</h1>
 </template>
 
 <style scoped>
