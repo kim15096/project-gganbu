@@ -1,16 +1,26 @@
-<script setup>
+<script>
 import example1 from '@/assets/example1.jpg'
 import example2 from '@/assets/example2.jpg'
+import { useLayoutStore } from '@/stores/layoutStore';
 
 import { ref } from 'vue'
+
+export default {
+  name: "home",
+  setup() {
+        const layoutStore = useLayoutStore()
+        return { layoutStore }
+    },
+  }
 const currentDate = ref(new Date().toISOString().slice(0,10))
 
 </script>
 
 <template>
+  <div v-if="layoutStore.isPhoneLayout">
   <div class="card-container">
     <div class="card">
-      <img :src="example1" alt="Example Image" class="card-image">
+      <img src="../assets/example1.jpg" alt="Example Image" class="card-image">
       <div class="card-body">
         <button class="likes-btn">❤️ {{ likes }} likes </button>
         <button class="comments-btn">💬 {{ comments }} comments</button>
@@ -19,11 +29,11 @@ const currentDate = ref(new Date().toISOString().slice(0,10))
           <button class="join-party-btn">🥳 {{ party }} Join the party</button>
         </div>
       </div>
-      <div class ="card-date">{{ currentDate }}</div>
+      <div class="card-date">{{ currentDate }}</div>
     </div>
     <div class="divider"></div>
     <div class="card">
-      <img :src="example2" alt="Example Image" class="card-image">
+      <img src="../assets/example2.jpg" alt="Example Image" class="card-image">
       <div class="card-body">
         <button class="likes-btn">❤️ {{ likes }} likes </button>
         <button class="comments-btn">💬 {{ comments }} comments</button>
@@ -32,9 +42,10 @@ const currentDate = ref(new Date().toISOString().slice(0,10))
           <button class="join-party-btn">🥳 {{ party }} Join the party</button>
         </div>
       </div>
-      <div class ="card-date">{{ currentDate }}</div>
+      <div class="card-date">{{ currentDate }}</div>
     </div>
   </div>
+</div>
 </template>
 
 
