@@ -22,15 +22,7 @@ export default {
           },
         },
       })
-
     }, 
-
-    async getUserData() {
-      const { data, error } = await supabase.auth.getUser()
-      if (!error) {      
-        console.log(data.user.user_metadata.name)
-      }
-    },
   }
 }
 </script>

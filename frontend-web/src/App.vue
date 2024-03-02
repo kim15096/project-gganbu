@@ -14,11 +14,13 @@ import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue"
 import { useLayoutStore } from './stores/layoutStore';
 import { useAuthStore } from './stores/authStore';
+import { supabase } from './lib/supabaseClient';
 
 const axios_inst = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
   timeout: 1000,
 });
+
 
 export default {
   name: 'App',
@@ -40,7 +42,15 @@ export default {
   },
   // Detecting phone viewport for webapp
   created() {
-    this.authStore.checkUserLoggedIn();
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN') {
+        // User is signed in, you can perform actions here
+        console.log('User signed in:', session);
+      } else if (event === 'SIGNED_OUT') {
+        // User is signed out, handle accordingly
+        console.log('User signed out');
+      }
+    });
   },
   mounted() {
     this.layoutStore.updateLayout();

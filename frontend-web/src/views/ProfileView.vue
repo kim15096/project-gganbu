@@ -5,15 +5,19 @@
   
   <!-- PHONE LAYOUT -->
   <div v-if="layoutStore.isPhoneLayout">
-    <div class="card mt-4" style="width: 100%">
+    <div class="phone-main">
+    <div class="card" style="width: 100%">
       <div class="card-body">      
         <img src="../components/icons/IconGoogle.png" class="card-img-top" alt="...">
         <h5 class="card-title mt-2">{{ authStore.userFullName }}</h5>
         <p class="card-text">{{ authStore.userEmail }}</p>
       </div>
     </div>
+    <h3 class="mt-4">My Clubs</h3>
+    <hr>
     <!-- Sign Out -->
     <button class="btn btn-outline-danger mt-4" @click="signOut"  style="width: 100%">Sign Out</button>
+  </div>
   </div>
 </template>
 
@@ -45,8 +49,13 @@ export default {
 </script>
 
 <style scoped>
+.phone-main {
+  width: 100vw;
+  height: 100vh;
+  padding: 16px;
+}
 .card-img-top{
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 </style>
