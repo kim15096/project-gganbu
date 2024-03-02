@@ -57,8 +57,6 @@ def get_posts():
     data = response.data
     return data
 
-
-
 # DEV: Run on PORT: 8080 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
