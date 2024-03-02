@@ -14,6 +14,7 @@ const currentDate = ref(new Date().toISOString().slice(0,10))
       <div class="card-body">
         <button class="likes-btn">❤️ {{ likes }} likes </button>
         <button class="comments-btn">💬 {{ comments }} comments</button>
+        <button class="save-btn">💾 {{ save }} save</button>
         <div class="button-container">
           <button class="join-party-btn">🥳 {{ party }} Join the party</button>
         </div>
@@ -26,6 +27,7 @@ const currentDate = ref(new Date().toISOString().slice(0,10))
       <div class="card-body">
         <button class="likes-btn">❤️ {{ likes }} likes </button>
         <button class="comments-btn">💬 {{ comments }} comments</button>
+        <button class="save-btn">💾 {{ save }} save</button>
         <div class="button-container">
           <button class="join-party-btn">🥳 {{ party }} Join the party</button>
         </div>
@@ -99,6 +101,22 @@ body {
   border-radius: 8px; 
 }
 .comments-btn:hover{
+  background-color: #45a049
+}
+.save-btn {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 10px 19px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px; 
+}
+.save-btn:hover{
   background-color: #45a049
 }
 
