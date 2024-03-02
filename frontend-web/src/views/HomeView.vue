@@ -2,29 +2,39 @@
 import example1 from '@/assets/example1.jpg'
 import example2 from '@/assets/example2.jpg'
 
+import { ref } from 'vue'
+const currentDate = ref(new Date().toISOString().slice(0,10))
+
 </script>
 
 <template>
-  <div class="card">
-    <img :src="example1" alt="Example Image" class="card-image">
-    <div class="card-body">
-      <button class="likes-btn">❤️ {{ likes }} likes </button>
-      <button class="comments-btn">💬 {{ comments }} comments</button>
-      <div class="button-container">
-        <button class="join-party-btn">🥳 {{ party }} Join the party</button>
+  <div class="card-container">
+    <div class="card">
+      <img :src="example1" alt="Example Image" class="card-image">
+      <div class="card-body">
+        <button class="likes-btn">❤️ {{ likes }} likes </button>
+        <button class="comments-btn">💬 {{ comments }} comments</button>
+        <div class="button-container">
+          <button class="join-party-btn">🥳 {{ party }} Join the party</button>
+        </div>
       </div>
+      <div class ="card-date">{{ currentDate }}</div>
     </div>
-    <img :src="example2" alt="Example Image" class="card-image">
-    <div class="card-body">
-      <button class="likes-btn">❤️ {{ likes }} likes </button>
-      <button class="comments-btn">💬 {{ comments }} comments</button>
-      <div class="button-container">
-        <button class="join-party-btn">🥳 {{ party }} Join the party</button>
+    <div class="divider"></div>
+    <div class="card">
+      <img :src="example2" alt="Example Image" class="card-image">
+      <div class="card-body">
+        <button class="likes-btn">❤️ {{ likes }} likes </button>
+        <button class="comments-btn">💬 {{ comments }} comments</button>
+        <div class="button-container">
+          <button class="join-party-btn">🥳 {{ party }} Join the party</button>
+        </div>
       </div>
+      <div class ="card-date">{{ currentDate }}</div>
     </div>
   </div>
-  
 </template>
+
 
 <style>
 body {
