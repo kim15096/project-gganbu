@@ -3,11 +3,13 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
+    <!-- WEB-LAYOUT -->
     <div v-if="!layoutStore.isPhoneLayout" class="footer">
         <hr class="m-0" style="padding-bottom: 4px;">
          <a class="ms-2">LikeLion Project: GGANBU</a>
     </div>
-    <div v-else-if="layoutStore.isPhoneLayout && authStore.userLoggedIn" class="bottomNav">
+    <!-- PHONE-LAYOUT (BOTTOM NAVIGATION) -->
+    <div v-else-if="layoutStore.isPhoneLayout" class="bottomNav">
         <SwipeBottomNavigation swiper-color='#E66000' icon-color="#E66000" :options="options" v-model="selected" />
     </div>
   </template>

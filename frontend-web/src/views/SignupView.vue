@@ -22,23 +22,13 @@ export default {
           },
         },
       })
-
     }, 
 
-    async getUserData() {
-      const { data, error } = await supabase.auth.getUser()
-      if (!error) {      
-        console.log(data.user.user_metadata.name)
-      }
-    },
   }
 }
 </script>
 
 <style scoped>
-body {
-  
-}
 .signup-container {
   display: flex;
   flex-direction: column;

@@ -1,11 +1,12 @@
 <template>
   <!-- WEB LAYOUT -->
   <div v-if="!layoutStore.isPhoneLayout">
+    <h1>Please use the web app on you phone!</h1>
   </div>
   
   <!-- PHONE LAYOUT -->
-  <div v-if="layoutStore.isPhoneLayout">
-    <div class="card mt-4" style="width: 100%">
+  <div class="phone-main p-3" v-if="layoutStore.isPhoneLayout">
+    <div class="card" style="width: 100%">
       <div class="card-body">      
         <img src="../components/icons/IconGoogle.png" class="card-img-top" alt="...">
         <h5 class="card-title mt-2">{{ authStore.userFullName }}</h5>
@@ -29,7 +30,10 @@ export default {
         const authStore = useAuthStore()
         return { layoutStore, authStore }
     },
-  
+  mounted() {
+
+  },
+
   methods: {
       async signOut() {
       const { error } = await supabase.auth.signOut()
@@ -46,7 +50,12 @@ export default {
 
 <style scoped>
 .card-img-top{
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+}
+
+.phone-main {
+  width: 100vw;
+  height: 100vh;
 }
 </style>
