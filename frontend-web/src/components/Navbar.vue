@@ -6,7 +6,7 @@
       <a class="navbar-brand" href="/">
         
         <img class="pb-1" src="./icons/IconLogo.png" style="width:45px; height: 45px">
-        <text class="fs-5 ms-1">GGANBU</text>
+        <text class="fs-5 fw-bold">GGANBU</text>
       </a>
       <a href="/signup" style="margin-left: auto;">Sign In</a>
 
