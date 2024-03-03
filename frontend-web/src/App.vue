@@ -39,7 +39,6 @@ export default {
     
     supabase.auth.onAuthStateChange((event, session) => {
       if (session && session.provider_token) {
-        console.log("HELLO")
         this.authStore.userSignedIn()
         this.authStore.setName(session.user.user_metadata.full_name)
         this.authStore.setEmail(session.user.email)

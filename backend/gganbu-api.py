@@ -28,31 +28,16 @@ def get_name():
     response = supabase.table('Users').select("*").execute()
     data = response.data
     return data
-'''
-Example Route:
-
-@app.route('/auto_complete', methods=['GET', 'POST'])
-def auto_complete():
-    data = request.json
-    
-    category = data['suggested_category']
-    item = data['item']
-    keywords = data['keywords']
-    
-    description = auto_completion.get_completion(item, category, keywords)
-    
-    return description
-'''
 
 #################################### USER ROUTES ######################################
 
 
 #################################### POST ROUTES ######################################
 '''
-Get Posts
+Get Home Events
 '''
-@app.route('/get_posts', methods=['GET'])
-def get_posts():
+@app.route('/get_home_events', methods=['GET'])
+def get_home_events():
     response = supabase.table('Events').select("*").execute()
     data = response.data
     return data

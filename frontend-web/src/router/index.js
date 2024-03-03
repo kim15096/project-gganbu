@@ -3,7 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import SearchView from '../views/SearchView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import SignupView from '../views/SignupView.vue'
-import FavoritesView from '../views/FavoritesView.vue'
+import MyEventsView from '../views/MyEventsView.vue'
+import MyClubsView from '@/views/MyClubsView.vue'
 import { supabase } from '@/lib/supabaseClient'
 
 const { data: { user } } = await supabase.auth.getUser()
@@ -39,9 +40,15 @@ const router = createRouter({
       component: SignupView
     },
     {
-      path: '/favorites',
-      name: 'favorites',
-      component: FavoritesView,
+      path: '/myevents',
+      name: 'events',
+      component: MyEventsView,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/myclubs',
+      name: 'clubs',
+      component: MyClubsView,
       meta: { requiresAuth: true },
     }
   ]

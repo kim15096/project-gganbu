@@ -7,7 +7,7 @@ import { ref, onMounted } from 'vue'
 
 
 export default {
-  name: "home",
+  name: "clubs",
   setup() {
         const layoutStore = useLayoutStore()
         const currentDate = ref(new Date().toISOString().slice(0,10))
@@ -16,7 +16,7 @@ export default {
         
         const fetchData = async () => {
           try {
-            const {data} = await axiosInstance.get('/get_home_events', {
+            const {data} = await axiosInstance.get('/get_my_events', {
               headers: {
                 'Content-Type': 'application/json'
               }
