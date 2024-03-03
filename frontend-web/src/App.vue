@@ -9,17 +9,11 @@
 
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import axios from 'axios'
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue"
 import { useLayoutStore } from './stores/layoutStore';
 import { useAuthStore } from './stores/authStore';
 import { supabase } from './lib/supabaseClient';
-
-const axios_inst = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
-  timeout: 1000,
-});
 
 export default {
   name: 'App',
@@ -33,18 +27,19 @@ export default {
         const authStore = useAuthStore()
         return { layoutStore, authStore }
     },
-
-  data() {
-    return {
-      isPhoneLayout: false,
-    };
-  },
   mounted() {
     // Auth Listener & check if first time signing in 
     const hasSignedIn = localStorage.getItem('hasSignedIn');
     
+    const checkToken = localStorage.getItem('sb-erkrnapudejsowehnquz-auth-token')
+    
+    if (checkToken){
+      this.checkSupabaseUser()
+    }
+    
     supabase.auth.onAuthStateChange((event, session) => {
       if (session && session.provider_token) {
+        console.log("HELLO")
         this.authStore.userSignedIn()
         this.authStore.setName(session.user.user_metadata.full_name)
         this.authStore.setEmail(session.user.email)
@@ -53,6 +48,7 @@ export default {
           this.checkUserInDatabase(session)
         }
       }
+      
       if (event === 'SIGNED_OUT') {
         this.authStore.userSignedOut()
         localStorage.removeItem('hasSignedIn');
@@ -67,6 +63,14 @@ export default {
     window.removeEventListener('resize', this.layoutStore.updateLayout);
   },
   methods: {
+    async checkSupabaseUser(){
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user){
+        this.authStore.userSignedIn()
+        this.authStore.setName(user.user_metadata.full_name)
+        this.authStore.setEmail(user.email)
+      }
+    },
     async checkUserInDatabase(session){
       const { data, error } = await supabase
             .from('Users')  // Replace with your actual table name

@@ -2,15 +2,36 @@
 import example1 from '@/assets/example1.jpg'
 import example2 from '@/assets/example2.jpg'
 import { useLayoutStore } from '@/stores/layoutStore';
+import axiosInstance from '@/lib/axiosInstance'
+import { ref, onMounted } from 'vue'
 
-import { ref } from 'vue'
 
 export default {
   name: "home",
   setup() {
         const layoutStore = useLayoutStore()
         const currentDate = ref(new Date().toISOString().slice(0,10))
-        return { layoutStore, currentDate }
+
+        const cardList = ref([]);
+        
+        const fetchData = async () => {
+          try {
+            const {data} = await axiosInstance.get('/get_posts', {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            cardList.value = data;
+          } catch (error) {
+            console.error('Error fetching data:', error.message);
+      }
+        };
+
+        onMounted(() => {
+          fetchData(); 
+        });
+
+        return { layoutStore, currentDate, cardList }
     },
   }
 
@@ -23,31 +44,38 @@ export default {
   </div>
 
   <!-- PHONE-LAYOUT -->
-  <div class="phone-main p-3" v-if="layoutStore.isPhoneLayout">
+  <div class="phone-main p-4" v-if="layoutStore.isPhoneLayout">
   <div class="card-container">
-    <div class="card">
+    <div v-for="card in cardList" class="card" :key="card.id">
       <img src="../assets/example1.jpg" alt="Example Image" class="card-image">
-      <div class="card-body">
-        <button class="btn btn-light">💾 Save </button>
-        <button class="btn btn-success">🥳 Join the party</button>
+      <div class="card-bottom">
+          <text class="fw-bold fs-6">{{ card.event_title }} </text>
+          <text class="event-desc mt-1">{{ card.event_desc }} </text>
+          <text class="mt-1">{{ card.created_at }}</text>
+           <div class="card-body">
+            <button class="btn btn-light card-button">💾 Save </button>
+            <button class="btn btn-success card-button">🥳 Join the party</button>
+          </div>
       </div>
-      <div class="card-date ms-4">{{ currentDate }}</div>
-    </div>
 
-    <div class="card">
-      <img src="../assets/example2.jpg" alt="Example Image" class="card-image">
-      <div class="card-body">
-        <button class="btn btn-light">💾 Save </button>
-        <button class="btn btn-success">🥳 Join the party</button>
-      </div>
-      <div class="card-date ms-4">{{ currentDate }}</div>
     </div>
   </div>
+
 </div>
 </template>
 
 
 <style scoped>
+
+.event-desc {
+  font-size: 15px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+          line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+
 .phone-main {
   width: 100%;
   height: 100%;
@@ -58,21 +86,31 @@ export default {
 
 .card {
   max-width: 500px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   overflow: hidden;
 }
 
+.card-button {
+  font-size: 14px;
+}
+
 .card-image {
   width: 100%;
-  height: auto;
+  aspect-ratio : 1 / 1;
 }
 
 .card-body {
-  padding: 15px;
+  padding: 16px 0px 0px 0px;
   display: flex;
   justify-content: space-between;
+}
+
+.card-bottom {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
 }
 </style>
