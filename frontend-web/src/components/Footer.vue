@@ -9,7 +9,7 @@
          <a class="ms-2">LikeLion Project: GGANBU</a>
     </div>
     <!-- PHONE-LAYOUT (BOTTOM NAVIGATION) -->
-    <div v-else-if="layoutStore.isPhoneLayout" class="bottomNav">
+    <div v-else-if="layoutStore.isPhoneLayout && authStore.userLoggedIn" class="bottomNav">
         <SwipeBottomNavigation swiper-color='#E66000' icon-color="#E66000" :options="options" v-model="selected" />
     </div>
   </template>

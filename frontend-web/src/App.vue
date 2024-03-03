@@ -103,4 +103,10 @@ a {
   display: flex;
   padding: 0px;
 }
+
+body {
+  background-color: #f1f1f1;
+  margin: 0;
+}
+
 </style>
