@@ -4,8 +4,9 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container me-4">
       <a class="navbar-brand" href="/">
-        <text class="fw" style="color: #000000; font-weight: 600;">🤙 GGANBU</text>
-        <text class="fs-5 ms-3">UC Davis</text>
+        
+        <img class="pb-1" src="./icons/IconLogo.png" style="width:45px; height: 45px">
+        <text class="fs-5 ms-1">GGANBU</text>
       </a>
       <a href="/signup" style="margin-left: auto;">Sign In</a>
 

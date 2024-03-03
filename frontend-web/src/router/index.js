@@ -44,17 +44,18 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  // instead of having to check every route record with
-  // to.matched.some(record => record.meta.requiresAuth)
+
   if (to.meta.requiresAuth && !user) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
     return {
       path: '/signup',
-      // save the location we were at to come back later
     }
   }
-})
+  if (to.name == 'signup' && user) {
+    return {
+      path: '/'
+    }
+  }
+})  
 
 
 export default router

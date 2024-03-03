@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar v-if="!layoutStore.isPhoneLayout"/>
-    <RouterView /> 
+    <RouterView />
     <Footer />
   </div>
 
@@ -39,14 +39,13 @@ export default {
       isPhoneLayout: false,
     };
   },
-  created() {
+  mounted() {
     // Auth Listener & check if first time signing in 
     const hasSignedIn = localStorage.getItem('hasSignedIn');
     
     supabase.auth.onAuthStateChange((event, session) => {
       if (session && session.provider_token) {
         this.authStore.userSignedIn()
-
         this.authStore.setName(session.user.user_metadata.full_name)
         this.authStore.setEmail(session.user.email)
 
@@ -59,8 +58,7 @@ export default {
         localStorage.removeItem('hasSignedIn');
       }
 })
-  },
-  mounted() {
+
     // Detecting phone viewport for webapp
     this.layoutStore.updateLayout();
     window.addEventListener('resize', this.layoutStore.updateLayout);
