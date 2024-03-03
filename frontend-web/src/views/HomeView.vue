@@ -44,17 +44,16 @@ export default {
   </div>
 
   <!-- PHONE-LAYOUT -->
-  <div class="phone-main p-4" v-if="layoutStore.isPhoneLayout">
+  <div class="phone-main" v-if="layoutStore.isPhoneLayout">
   <div class="card-container">
     <div v-for="card in cardList" class="card" :key="card.id">
       <img src="../assets/example1.jpg" alt="Example Image" class="card-image">
       <div class="card-bottom">
           <text class="fw-bold fs-6">{{ card.event_title }} </text>
           <text class="event-desc mt-1">{{ card.event_desc }} </text>
-          <text class="mt-1">{{ card.created_at }}</text>
            <div class="card-body">
-            <button class="btn btn-light card-button">💾 Save </button>
-            <button class="btn btn-success card-button">🥳 Join the party</button>
+            <button class="btn btn-outline-success btn-sm card-button">💾 Save </button>
+            <button class="btn btn-outline-dark btn-sm card-button">🥳 Join the party</button>
           </div>
       </div>
 
@@ -68,7 +67,7 @@ export default {
 <style scoped>
 
 .event-desc {
-  font-size: 15px;
+  font-size: 14px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
@@ -79,14 +78,15 @@ export default {
 .phone-main {
   width: 100%;
   height: 100%;
+  padding: 35px;
 }
 .card-container {
-  padding-bottom: 50px;
+  padding-bottom: 75px;
 }
 
 .card {
   max-width: 500px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -103,7 +103,7 @@ export default {
 }
 
 .card-body {
-  padding: 16px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
   display: flex;
   justify-content: space-between;
 }

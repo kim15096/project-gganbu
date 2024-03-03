@@ -13,6 +13,10 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: 'index',
+    },
+    {
+      path: '/home',
       name: 'home',
       component: HomeView,
       meta: { requiresAuth: true },
@@ -52,7 +56,12 @@ router.beforeEach((to, from) => {
   }
   if (to.name == 'signup' && user) {
     return {
-      path: '/'
+      path: '/home'
+    }
+  }
+  if (to.name == 'index'){
+    return {
+      path: '/home'
     }
   }
 })  

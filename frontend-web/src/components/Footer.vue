@@ -10,7 +10,7 @@
     </div>
     <!-- PHONE-LAYOUT (BOTTOM NAVIGATION) -->
     <div v-else-if="layoutStore.isPhoneLayout && authStore.userLoggedIn" class="bottomNav">
-        <SwipeBottomNavigation swiper-color='#E66000' icon-color="#E66000" :options="options" v-model="selected" />
+        <SwipeBottomNavigation swiper-color='#FFFFFF' icon-color="#200000" :options="options" v-model="selected" />
     </div>
   </template>
   
@@ -39,8 +39,9 @@
           path: { name: "search", query:""},
           title: 'Search',
         },
-        { id: 3, icon: 'fa fa-heart fa-lg', path: { name: "favorites", query:""}, title: 'Favorites' },
-        { id: 4, icon: 'fa fa-user fa-lg',  path: { name: "profile", query:""}, title: 'Profile' }
+        { id: 3, icon: 'fa fa-users fa-lg', path: { name: "clubs", query:""}, title: 'My Clubs' },
+        { id: 4, icon: 'fa fa-heart fa-lg', path: { name: "favorites", query:""}, title: 'My Events' },
+        { id: 5, icon: 'fa fa-user fa-lg',  path: { name: "profile", query:""}, title: 'Profile' }
       ],
     }),
 
