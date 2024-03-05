@@ -10,7 +10,7 @@
     </div>
     <!-- PHONE-LAYOUT (BOTTOM NAVIGATION) -->
     <div v-else-if="layoutStore.isPhoneLayout && authStore.userLoggedIn" class="bottomNav">
-        <SwipeBottomNavigation swiper-color='#FFFFFF' icon-color="#200000" :options="options" v-model="selected" />
+        <SwipeBottomNavigation swiper-color='#FFFFFF' icon-color="#222222" :options="options" v-model="selected" />
     </div>
   </template>
   

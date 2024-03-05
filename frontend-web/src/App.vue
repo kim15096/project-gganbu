@@ -1,7 +1,11 @@
 <template>
   <div id="app">
+
     <Navbar v-if="!layoutStore.isPhoneLayout"/>
+
     <RouterView />
+
+    
     <Footer />
   </div>
 
@@ -106,7 +110,7 @@ a {
 }
 
 body {
-  background-color: #f1f1f1;
+  background-color: #fafafa;
   margin: 0;
 }
 

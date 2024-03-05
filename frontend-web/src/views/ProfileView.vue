@@ -58,4 +58,14 @@ export default {
   width: 100vw;
   height: 100vh;
 }
+
+.card {
+  max-width: 500px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid rgb(230, 230, 230);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
 </style>
