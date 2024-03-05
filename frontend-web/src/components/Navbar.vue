@@ -16,13 +16,12 @@
 
 <!-- PHONE LAYOUT -->
 <div v-if="layoutStore.isPhoneLayout" class="app-navbar">
-  <nav class="navbar navbar-expand-lg mobile-navbar bg-light">
+  <nav class="navbar mobile-navbar bg-light">
     <div class="container">
       <a class="navbar-brand" href="/"> 
-        <text class="fw" style="color: #000000; font-weight: 600;">🤙 GGANBU</text>
+        <img class="pb-1" src="./icons/IconLogo.png" style="width:50px; height: 50px">
+        <text class="brand-text fw-bold">ganbu</text>
       </a>
-      <a v-if="!authStore.userLoggedIn" href="/signup" style="margin-left:auto;">Sign In</a>
-
     </div>
   </nav>
 </div>
@@ -49,9 +48,11 @@ export default {
   height: 65px;
 }  
 .mobile-navbar{
-  background-color: white!important;
-  box-shadow: 0 1px 1px 0 rgba(37, 37, 37, 0.1);
-  height: 55px;
+  background-color: #ffffff!important;
+  box-shadow: 0 2px 2px 0 rgba(99, 99, 99, 0.1);
+  height: 65px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }  
 .container {
   margin-left:5px;
@@ -63,4 +64,5 @@ export default {
   top: 0; /* To make it stick to the very left of the page */
   width: 100vw; /* Adjust the width as needed */
 }
+
 </style>

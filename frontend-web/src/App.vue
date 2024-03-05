@@ -110,7 +110,7 @@ a {
 }
 
 body {
-  background-color: #fafafa;
+  background-color: #ffffff;
   margin: 0;
 }
 

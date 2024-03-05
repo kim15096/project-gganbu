@@ -1,3 +1,34 @@
+<template>
+  <!-- WEB LAYOUT -->
+  <div v-if="!layoutStore.isPhoneLayout">
+    <h1>Please use the web app on you phone!</h1>
+  </div>
+
+  <!-- PHONE-LAYOUT -->
+  <div class="phone-main" v-if="layoutStore.isPhoneLayout">
+    <!-- Header (only for home) -->
+    <div class="navbar-header">  
+      <Navbar />
+    </div>
+  <div class="card-container">
+    <div v-for="card in cardList" class="card" :key="card.id">
+      <img src="../assets/example1.jpg" alt="Example Image" class="card-image">
+      <span class="badge rounded-pill text-bg-light info-tab">⏰ {{ formattedDate(card.event_time) }}</span>
+        <div class="card-body">
+          <text class="fw-bold fs-6">{{ card.event_title }} </text>
+          <text class="event-desc mt-1">{{ card.event_desc }} </text>
+           <div class="card-bottom">
+            <text class="event-desc mt-1" style="font-size: 12px; color:gray">Hosted by {{ card.event_host }} </text>
+            <button class="btn btn-link-light btn-sm card-button fw-bold">🥳 Join</button>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</template>
+
 <script>
 import example1 from '@/assets/example1.jpg'
 import example2 from '@/assets/example2.jpg'
@@ -5,10 +36,13 @@ import { useLayoutStore } from '@/stores/layoutStore';
 import axiosInstance from '@/lib/axiosInstance'
 import { ref, onMounted } from 'vue'
 import moment from 'moment';
-
+import Navbar from '@/components/Navbar.vue';
 
 export default {
   name: "home",
+  components: {
+    Navbar,
+  },
   setup() {
         const layoutStore = useLayoutStore()
         const currentDate = ref(new Date().toISOString().slice(0,10))
@@ -44,33 +78,6 @@ export default {
 
 </script>
 
-<template>
-  <!-- WEB LAYOUT -->
-  <div v-if="!layoutStore.isPhoneLayout">
-    <h1>Please use the web app on you phone!</h1>
-  </div>
-
-  <!-- PHONE-LAYOUT -->
-  <div class="phone-main" v-if="layoutStore.isPhoneLayout">
-  <div class="card-container">
-    <div v-for="card in cardList" class="card" :key="card.id">
-      <img src="../assets/example1.jpg" alt="Example Image" class="card-image">
-      <span class="badge rounded-pill text-bg-light info-tab">⏰ {{ formattedDate(card.event_time) }}</span>
-        <div class="card-body">
-          <text class="fw-bold fs-6">{{ card.event_title }} </text>
-          <text class="event-desc mt-1">{{ card.event_desc }} </text>
-           <div class="card-bottom">
-            <text class="event-desc mt-1" style="font-size: 12px; color:gray">Hosted by {{ card.event_host }} </text>
-            <button class="btn btn-link-light btn-sm card-button fw-bold">🥳 Join</button>
-          </div>
-      </div>
-
-    </div>
-  </div>
-
-</div>
-</template>
-
 
 <style scoped>
 
@@ -86,10 +93,12 @@ export default {
 .phone-main {
   width: 100%;
   height: 100%;
-  padding: 35px;
+  padding: 25px;
 }
 .card-container {
   padding-bottom: 75px;
+  padding-top: 50px;
+  z-index: 1;
 }
 
 .card {
@@ -130,5 +139,10 @@ export default {
   top: 15px;
   opacity: 0.95;
   padding: 6px;
+}
+
+.navbar-header {
+  position: relative;
+  z-index: 1000;
 }
 </style>
